@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new Ticket for project <%= project.name %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a new Ticket</h1>
+
+    <form action="/users/<%= user._id %>/projects/<%= project._id %>/tickets" method="POST">
+        <label for="description">description:</label>
+        <textarea name="description" id="description"></textarea>
+
+        <label for="priority">priority:</label>
+        <select name="priority" id="priority">
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+        </select>
+
+        <label for="status">status:</label>
+        <select name="status" id="status">
+            <option value="Open">Open</option>
+            <option value="In-progress">In-progress</option>
+            <option value="On-hold">On-hold</option>
+            <option value="Under-review">Under-review</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Closed">Closed</option>
+        </select>
+
+        <button type="submit">Create the ticket</button>
+    </form>
+</body>
+</html>

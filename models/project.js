@@ -3,10 +3,20 @@ const { create } = require("./user");
 
 const ticketSchema = new mongoose.Schema({
     description: String,
-    createdAt: Date,
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        min: [new Date(), Date.now]
+    },
     priority: {
         type: String,
-        enum: ['Low','Normal','High','Critical']
+        enum: ['Low','Normal','High','Critical'],
+        required: true
+    },
+    status: {
+        type:String,
+        enum: ['Open','In-progress','On-hold','Under-review','Resolved','Closed'],
+        required: true
     }
 },{timestamps: true});
 

@@ -11,13 +11,13 @@
     <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/new">Add a Ticket</a>
 
     <ul>
-        <% if ( !project.tickets ) { %>
+        <% if ( project.tickets.length == 0 ) { %>
             <p>You don't have any project tickets</p>
         <% } else { %>
             <% project.tickets.forEach((ticket) => { %>
                 <li>
-                    <a href="/users/<%= user._id %>/projects/<%= project._id %>">
-                        <%= project.name %>
+                    <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= ticket._id %>">
+                        <%= ticket.description %>
                     </a>
                 </li>
             <% }) %>
