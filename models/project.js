@@ -14,11 +14,15 @@ const projectSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true
     },
     members: [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],
-    tickets: [ticketSchema]
+    tickets: [ticketSchema],
+    owner: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    }
 });
 
 const Project = mongoose.model('Project',projectSchema);

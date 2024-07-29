@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= currentProject.name %> </title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h3><%= currentProject.name %></h3>
+    
+    <a href="/users/<%= user._id %>/projects/<%= currentProject._id %>/edit">Edit this project</a> 
+
+    <form
+      action="/users/<%= user._id %>/projects/<%= currentProject._id %>?_method=DELETE"
+      method="post">
+      <button type="submit">Delete this recipe</button>
+    </form>
+
+</body>
+</html>

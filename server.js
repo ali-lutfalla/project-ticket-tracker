@@ -17,6 +17,8 @@ require('./config/database.js');
 // controllers
 
 const authController = require('./controllers/auth.js');
+const projectsController = require('./controllers/projects.js');
+const ticketsController = require('./controllers/tickets.js');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -43,6 +45,8 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authController);
 app.use(isSignedIn);
+app.use('/users/:userId/projects', projectsController);
+app.use('/users/:userId/projects/:projectId/tickets',ticketsController);
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}!`);

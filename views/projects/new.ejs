@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Adding a new project</h1>
+    <form action="/users/<%= user._id %>/projects" method="POST">
+
+        <label for="name">Name of the project</label>
+        <input type="text" name="name" id="name" required>
+
+        <select name="members" id="members" multiple>
+            <% users.forEach((user) => { %>
+                <option value="<%= user._id %>"><%= user.username %></option>
+            <% }) %>
+        </select>
+
+        <button type="submit">create the project</button>
+
+    </form>
+
+</body>
+</html>

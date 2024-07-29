@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Editing a project</h1>
+    <form action="/users/<%= user._id %>/projects/<%= projectToEdit._id %>?_method=PUT" method="POST">
+
+        <label for="name">Name of the project</label>
+        <input type="text" name="name" id="name" value="<%= projectToEdit.name %>" required>
+
+        <label for="members">members of the project</label>
+        <select name="members" id="members" multiple>
+            <% users.forEach((user) => { %>
+                <option value="<%= user._id %>" <%= projectToEdit.members.includes(user._id) ? 'selected' : '' %>>><%= user.username %></option>
+            <% }) %>
+        </select>
+
+        <button type="submit">edit the project</button>
+
+    </form>
+
+</body>
+</html>

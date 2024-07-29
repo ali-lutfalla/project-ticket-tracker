@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My projects</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Welcome to your projects</h1>
+    <a href="/users/<%= user._id %>/projects/new">Add a project</a>
+
+    <ul>
+        <% if ( !projects ) { %>
+            <p>You don't have any projects</p>
+        <% } else { %>
+            <% projects.forEach((project) => { %>
+                <li>
+                    <a href="/users/<%= user._id %>/projects/<%= project._id %>">
+                        <%= project.name %>
+                    </a>
+                </li>
+            <% }) %>
+        <% } %>
+    </ul>
+</body>
+</html>
