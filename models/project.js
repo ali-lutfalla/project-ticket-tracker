@@ -6,7 +6,6 @@ const ticketSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        min: [new Date(), Date.now]
     },
     priority: {
         type: String,
