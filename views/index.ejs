@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticket Tracker</title>
-</head>
-<body>
-  
-  <h1>Ticket Tracker</h1>
-  <p>An application for tracking tickets in projects</p>
-  <% if (user) { %>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
-  <% } else { %>
-    <h1>Welcome to the app, guest.</h1>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
-  <% } %>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Tracker</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
+  </head>
+  <header>
+    <%- include('./partials/_navbar.ejs') %>
+  </header>
+  <body>
+    <section class="section">
+      <div class="container my-6">
+        <div class="columns is-vcentered">
+          <div class="column is-3"></div>
+          <div class="column is-6 has-text-centered">
+            <div class="card has-background-primary-light">
+              <div
+                class="card-header is-flex is-justify-content-center is-align-items-center"
+              >
+                <h1 class="">Ticket Tracker</h1>
+              </div>
+              <div class="card-content">
+                <p>An application for tracking tickets in projects</p>
+              </div>
+              <div class="card-footer">
+                <% if (user) { %>
+                <h1>Welcome to the app, <%= user.username %>!</h1>
+                <p>
+                  <a href="/auth/sign-out" class="card-footer-item">Sign out</a>
+                </p>
+                <% } else { %>
+                <a href="/auth/sign-up" class="card-footer-item">Sign up</a>
+                <a href="/auth/sign-in" class="card-footer-item">Sign in</a>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="column is-2"></div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

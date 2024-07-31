@@ -66,7 +66,7 @@ router.post('/sign-in',async (req, res , next) => {
 
     const validPassword = await bcrypt.compare(password , existingUser.password);
     if (!validPassword){
-        res.send('Invalid username or password');
+        res.send('Something Went Wrong!');
     }
     req.session.user = {
         username: existingUser.username,

@@ -1,11 +1,23 @@
-<nav>
+<nav class="navbar is-info has-shadow">
     <% if (user) { %>
-      <a href="/">home</a>
-      <a href="/users/<%= user._id %>/projects">your projects</a>
-      <a href="/auth/sign-out">sign-out</a>
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item">home</a>
+        </div>
+        <div class="navbar-menu" id="navbar-links">
+            <div class="navbar-end">
+                <a href="/users/<%= user._id %>/projects" class="navbar-item">your projects</a>
+                <a href="/auth/sign-out" class="navbar-item">sign-out</a>
+            </div>
+        </div>
      <% } else { %>
-         <a href="/">home</a>
-         <a href="/auth/sign-in">Sign In</a>
-         <a href="/auth/sign-up">Sign Up</a>
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item">home</a>
+        </div>
+        <div class="navbar-menu" id="navbar-links">
+            <div class="navbar-end">
+                <a href="/auth/sign-in" class="navbar-item">sign-in</a>
+                <a href="/auth/sign-out" class="navbar-item">sign-out</a>
+            </div>
+        </div>
      <% } %>
  </nav>

@@ -9,21 +9,46 @@
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>Editing a project</h1>
-    <form action="/users/<%= user._id %>/projects/<%= projectToEdit._id %>?_method=PUT" method="POST">
 
-        <label for="name">Name of the project</label>
-        <input type="text" name="name" id="name" value="<%= projectToEdit.name %>" required>
+    <section class="section">
+        <div class="container my-6">
+          <div class="columns is-vcentered">
+            <div class="column is-3"></div>
+            <div class="column is-6 has-text-centered">
+                <form action="/users/<%= user._id %>/projects/<%= projectToEdit._id %>?_method=PUT" method="POST">
 
-        <label for="members">members of the project</label>
-        <select name="members" id="members" multiple>
-            <% users.forEach((user) => { %>
-                <option value="<%= user._id %>" <%= projectToEdit.members.includes(user._id) ? 'selected' : '' %>>><%= user.username %></option>
-            <% }) %>
-        </select>
+                    <div class="field">
+                        <label class="label" for="name">Name of the project:</label>
+                        <input class="input is-success" type="text" name="name" id="name" placeholder="Enter the name of the project" required>
+                    </div>
 
-        <button type="submit">edit the project</button>
+                  
+                          <div class="field">
+                            <label class="label">Select Multiple</label>
+                            <div class="control">
+                              <div class="select is-multiple">
+                                <select name="members" id="members" multiple>
+                                    <% users.forEach((user) => { %>
+                                        <option value="<%= user._id %>" <%= projectToEdit.members.includes(user._id) ? 'selected' : '' %>>><%= user.username %></option>
+                                    <% }) %>
+                                </select>
+                              </div>
+                           
 
-    </form>
+            
+                    <div class="field my-3">
+                        <div class="control">
+                            <button type="submit" class="button is-danger">create the project</button>
+                        </div>
+                    </div>
+            
+                </form>
+            </div>
+            <div class="column is-2"></div>
+          </div>
+        </div>
+      </section>
+
 
 </body>
 </html>

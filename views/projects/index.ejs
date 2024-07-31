@@ -4,24 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My projects</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Welcome to your projects</h1>
     <a href="/users/<%= user._id %>/projects/new">Add a project</a>
+    <section class="section">
+        <div class="contianer">
+            <% if ( !projects ) { %>
+                <h1 class="title">You don't have any projects!</h1>
+            <% } else { %>
+                <div class="columns is-multiline">
+                    <% projects.forEach((project) => { %>
+                    <div class="column is-one-third">
+                        <div class="card">
+                            <a href="/users/<%= user._id %>/projects/<%= project._id %>">
+                                <div class="card-content">
+                                    <div class="content-left has-text-danger">
+                                        Project name: <%= project.name %>
+                                    </div>
+                                    <div class="content-right has-text-danger">
+                                        Project owner: @<%= project.owner.username %>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+                <% } %>
+        </div>
+    </section>
 
-    <ul>
-        <% if ( !projects ) { %>
-            <p>You don't have any projects</p>
-        <% } else { %>
-            <% projects.forEach((project) => { %>
-                <li>
-                    <a href="/users/<%= user._id %>/projects/<%= project._id %>">
-                        <%= project.name %>
-                    </a>
-                </li>
-            <% }) %>
-        <% } %>
-    </ul>
 </body>
 </html>

@@ -6,7 +6,7 @@ const Project = require('../models/project.js');
 
 router.get('/', async (req, res, next) => {
     try {
-        const projects = await Project.find({ members: req.session.user._id });
+        const projects = await Project.find({ members: req.session.user._id }).populate('owner');
         res.render('projects/index.ejs',{projects: projects});
     } catch (error) {
         console.log(error);

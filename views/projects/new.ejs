@@ -4,25 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>Adding a new project</h1>
-    <form action="/users/<%= user._id %>/projects" method="POST">
+    <section class="section">
+        <div class="container my-6">
+          <div class="columns is-vcentered">
+            <div class="column is-3"></div>
+            <div class="column is-6 has-text-centered">
+                <form action="/users/<%= user._id %>/projects" method="POST">
 
-        <label for="name">Name of the project</label>
-        <input type="text" name="name" id="name" required>
+                    <div class="field">
+                        <label class="label" for="name">Name of the project:</label>
+                        <input class="input is-success" type="text" name="name" id="name" placeholder="Enter the name of the project" required>
+                    </div>
 
-        <select name="members" id="members" multiple>
-            <% users.forEach((user) => { %>
-                <option value="<%= user._id %>"><%= user.username %></option>
-            <% }) %>
-        </select>
+                  
+                          <div class="field">
+                            <label class="label">Select Multiple</label>
+                            <div class="control">
+                              <div class="select is-multiple">
+                                <select name="members" id="members" multiple>
+                                    <% users.forEach((user) => { %>
+                                        <option value="<%= user._id %>"><%= user.username %></option>
+                                    <% }) %>
+                                </select>
+                              </div>
+                           
 
-        <button type="submit">create the project</button>
-
-    </form>
+            
+                    <div class="field my-3">
+                        <div class="control">
+                            <button type="submit" class="button is-danger">create the project</button>
+                        </div>
+                    </div>
+            
+                </form>
+            </div>
+            <div class="column is-2"></div>
+          </div>
+        </div>
+      </section>
 
 </body>
 </html>
