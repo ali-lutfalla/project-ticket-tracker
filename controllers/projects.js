@@ -41,7 +41,7 @@ router.post('/', async (req, res, next ) => {
 
 router.get('/:projectID', async (req, res, next ) => {
     try {
-        const currentProject = await Project.findOne({_id: req.params.projectID});
+        const currentProject = await Project.findOne({_id: req.params.projectID}).populate('members');
         res.render('projects/show.ejs',{currentProject: currentProject});
     } catch (error) {
         console.log(error);

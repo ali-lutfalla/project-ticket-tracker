@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= currentProject.name %> </title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= currentProject.name %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
+  </head>
+  <body>
     <%- include('../partials/_navbar.ejs') %>
 
     <h3><%= currentProject.name %></h3>
+    <section class="section">
+      <div class="container my-6">
+        <div class="columns is-vcentered">
+          <div class="column is-3"></div>
+          <div class="column is-6 has-text-centered">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-header-title"><%= currentProject.name %></p>
+              </div>
+              <div class="card-content">
+                <% currentProject.members.forEach((member) => { %>
+                <p>@<%= member.username %></p>
+                <% }) %>
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-item">
+                  <a
+                    href="/users/<%= user._id %>/projects/<%= currentProject._id %>/edit"
+                    >Edit this project</a
+                  >
+                </div>
+                <div class="card-footer-item">
+                  <a
+                    href="/users/<%= user._id %>/projects/<%= currentProject._id %>/tickets"
+                    >Check the tickets</a
+                  >
+                </div>
+                <div class="card-footer-item">
+                  <form
+                    action="/users/<%= user._id %>/projects/<%= currentProject._id %>?_method=DELETE"
+                    method="post"
+                  >
+                    <button type="submit">Delete this project</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-2"></div>
+        </div>
+      </div>
+    </section>
+
     
-    <a href="/users/<%= user._id %>/projects/<%= currentProject._id %>/edit">Edit this project</a> 
-
-    <a href="/users/<%= user._id %>/projects/<%= currentProject._id %>/tickets">Check the tickets</a>
-
-    <form
-      action="/users/<%= user._id %>/projects/<%= currentProject._id %>?_method=DELETE"
-      method="post">
-      <button type="submit">Delete this project</button>
-    </form>
-
-</body>
+  </body>
 </html>
