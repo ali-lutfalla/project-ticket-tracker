@@ -3,25 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= project.name %></title>
+    <title>tickets</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to your project tickets</h1>
-    <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/new">Add a Ticket</a>
+    <div class="p-2">
+        <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/new">Add a Ticket</a>
+    </div>
 
-    <ul>
-        <% if ( project.tickets.length == 0 ) { %>
-            <p>You don't have any project tickets</p>
-        <% } else { %>
-            <% project.tickets.forEach((ticket) => { %>
-                <li>
-                    <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= ticket._id %>">
-                        <%= ticket.description %>
-                    </a>
-                </li>
-            <% }) %>
-        <% } %>
-    </ul>
+    <section class="section">
+        <div class="contianer">
+            <% if ( project.tickets.length == 0 ) { %>
+                <h1 class="title has-text-centered">You don't have any project tickets</h1>
+            <% } else { %>
+                <div class="columns is-multiline">
+                    <% project.tickets.forEach((ticket) => { %>
+                    <div class="column is-one-third">
+                        <div class="card <%= ticket.priority === 'Low' ? 'has-background-link' : '' %>
+                             <%= ticket.priority === 'Normal' ? 'has-background-success' : '' %> <%= ticket.priority === 'High' ? 'has-background-warning' : '' %>
+                             <%= ticket.priority === 'Critical' ? 'has-background-danger' : '' %>">
+                            <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= ticket._id %>">
+                                <div class="card-content">
+                                    <div class="content-left has-text-light">
+                                        Ticket priority: <%= ticket.priority %>
+                                    </div>
+                                    <div class="content-right has-text-light">
+                                        Ticket status: <%= ticket.status %>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+                <% } %>
+        </div>
+    </section>
 </body>
 </html>

@@ -4,25 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ticket</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Information of the ticket</h1>
-    <p>description:</p>
-    <p><%= currentTicket.description %></p>
-    <p>priority:</p>
-    <p><%= currentTicket.priority %></p>
-    <p>status:</p>
-    <p><%= currentTicket.status %></p>
-    <p>Created at:</p>
-    <p><%= currentTicket.createdAt %></p>
-    <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets">back to the tickets</a>
-    <a href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= currentTicket._id %>/edit">Edit this ticket</a> 
 
-    <form
-      action="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= currentTicket._id %>?_method=DELETE"
-      method="post">
-      <button type="submit">Delete this ticket</button>
-    </form>
+
+    <section class="section">
+      <div class="container my-6">
+        <div class="columns is-vcentered">
+          <div class="column is-3"></div>
+          <div class="column is-6 has-text-centered">
+            <div class="card">
+              <div class="card-header">
+                <p class="card-header-title">Information of the ticket</p>
+              </div>
+              <div class="card-content">
+                <p>Created at: <%= currentTicket.createdAt %></p>
+                <p>priority: <%= currentTicket.priority %></p>
+                <p>status: <%= currentTicket.status %></p>
+                <p>description: <%= currentTicket.description %></p>
+
+              </div>
+              <div class="card-footer">
+                <div class="card-footer-item">
+                  <a
+                    href="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= currentTicket._id %>/edit"
+                    >Edit this ticket</a
+                  >
+                </div>
+                <div class="card-footer-item">
+                  <a
+                    href="/users/<%= user._id %>/projects/<%= project._id %>/tickets"
+                    >Back to the tickets</a
+                  >
+                </div>
+                <div class="card-footer-item">
+                  <form
+                    action="/users/<%= user._id %>/projects/<%= project._id %>/tickets/<%= currentTicket._id %>?_method=DELETE"
+                    method="post"
+                  >
+                    <button type="submit">Delete this ticket</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-2"></div>
+        </div>
+      </div>
+    </section>
 </body>
 </html>

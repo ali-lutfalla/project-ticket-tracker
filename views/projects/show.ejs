@@ -12,17 +12,18 @@
   <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h3><%= currentProject.name %></h3>
+    
     <section class="section">
       <div class="container my-6">
         <div class="columns is-vcentered">
           <div class="column is-3"></div>
           <div class="column is-6 has-text-centered">
-            <div class="card">
+            <div class="card has-text-centered">
               <div class="card-header">
-                <p class="card-header-title"><%= currentProject.name %></p>
+                <p class="card-header-title is-centered"><%= currentProject.name %></p>
               </div>
               <div class="card-content">
+                <p>Members of the project:</p>
                 <% currentProject.members.forEach((member) => { %>
                 <p>@<%= member.username %></p>
                 <% }) %>

@@ -4,34 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>new Ticket for project <%= project.name %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    />
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a new Ticket</h1>
 
-    <form action="/users/<%= user._id %>/projects/<%= project._id %>/tickets" method="POST">
-        <label for="description">description:</label>
-        <textarea name="description" id="description"></textarea>
+    <section class="section">
+        <div class="container my-6">
+          <div class="columns is-vcentered">
+            <div class="column is-3"></div>
+            <div class="column is-6 has-text-centered">
+                <form action="/users/<%= user._id %>/projects/<%= project._id %>/tickets" method="POST">
 
-        <label for="priority">priority:</label>
-        <select name="priority" id="priority">
-            <option value="Low">Low</option>
-            <option value="Normal">Normal</option>
-            <option value="High">High</option>
-            <option value="Critical">Critical</option>
-        </select>
+                    <div class="field">
+                        <label class="label" for="description">description:</label>
+                        <textarea class="textarea is-focused is-success" name="description" id="description"></textarea>
+                    </div> 
 
-        <label for="status">status:</label>
-        <select name="status" id="status">
-            <option value="Open">Open</option>
-            <option value="In-progress">In-progress</option>
-            <option value="On-hold">On-hold</option>
-            <option value="Under-review">Under-review</option>
-            <option value="Resolved">Resolved</option>
-            <option value="Closed">Closed</option>
-        </select>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select">
+                                <select name="priority" id="priority">
+                                    <option value="Low">Low</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="High">High</option>
+                                    <option value="Critical">Critical</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-        <button type="submit">Create the ticket</button>
-    </form>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select">
+                                <select name="status" id="status">
+                                    <option value="Open">Open</option>
+                                    <option value="In-progress">In-progress</option>
+                                    <option value="On-hold">On-hold</option>
+                                    <option value="Under-review">Under-review</option>
+                                    <option value="Resolved">Resolved</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+            
+                    <div class="field my-3">
+                        <div class="control">
+                            <button class="button is-primary" type="submit" class="button is-danger">create the project</button>
+                        </div>
+                    </div>
+            
+                </form>
+            </div>
+            <div class="column is-2"></div>
+          </div>
+        </div>
+      </section>
 </body>
 </html>

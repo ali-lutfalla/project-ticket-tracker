@@ -11,23 +11,24 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to your projects</h1>
-    <a href="/users/<%= user._id %>/projects/new">Add a project</a>
+    <div class="p-2">
+        <a href="/users/<%= user._id %>/projects/new">Add a project</a>
+    </div>
     <section class="section">
         <div class="contianer">
-            <% if ( !projects ) { %>
-                <h1 class="title">You don't have any projects!</h1>
+            <% if ( projects ) { %>
+                <h1 class="title has-text-centered">You don't have any projects!</h1>
             <% } else { %>
                 <div class="columns is-multiline">
                     <% projects.forEach((project) => { %>
                     <div class="column is-one-third">
-                        <div class="card">
+                        <div class="card has-background-link">
                             <a href="/users/<%= user._id %>/projects/<%= project._id %>">
                                 <div class="card-content">
-                                    <div class="content-left has-text-danger">
+                                    <div class="content-left has-text-light">
                                         Project name: <%= project.name %>
                                     </div>
-                                    <div class="content-right has-text-danger">
+                                    <div class="content-right has-text-light">
                                         Project owner: @<%= project.owner.username %>
                                     </div>
                                 </div>
