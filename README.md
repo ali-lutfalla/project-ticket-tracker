@@ -22,7 +22,7 @@
 
 ### ***Getting Started***
 ##### The link for the project plan is [here.](https://trello.com/b/9YPUN9fC/project-tickets-tracker)
-##### The game is deployed on this [link](https://project-ticket-tracker-2a5294c7f5f8.herokuapp.com/)
+##### The website is deployed on this [link](https://project-ticket-tracker-2a5294c7f5f8.herokuapp.com/)
 *** 
 
 ### ***Screenshots***
