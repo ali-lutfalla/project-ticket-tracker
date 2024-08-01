@@ -51,6 +51,10 @@ router.get('/:projectID', async (req, res, next ) => {
 router.delete('/:projectId',async (req, res, next) => {
     try {
         const projectToDelete = await Project.findOne({_id: req.params.projectId});
+        if (projectToDelete.members.includes(req.session.user._id)) {
+            projectToDelete.members.pull(req.session.user._id);
+            await projectToDelete.save();
+        }
 
         if (projectToDelete.owner.equals(req.session.user._id)) {
          await Project.findByIdAndDelete(projectToDelete._id);
